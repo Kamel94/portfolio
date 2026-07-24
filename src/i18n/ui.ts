@@ -85,6 +85,6 @@ export function useTranslations(lang: Lang) {
 
 export function getLangFromUrl(url: URL): Lang {
   const [, first] = url.pathname.split('/');
-  if (first in ui) return first as Lang;
+  if (Object.hasOwn(ui, first)) return first as Lang;
   return defaultLang;
 }

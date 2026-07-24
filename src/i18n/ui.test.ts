@@ -5,7 +5,7 @@ describe('useTranslations', () => {
   it('retourne la chaîne de la langue demandée', () => {
     expect(useTranslations('en')('nav.experiences')).toBe('Experience');
   });
-  it('retombe sur le français si la clé manque en anglais', () => {
+  it('retourne la chaîne française pour la langue fr', () => {
     expect(useTranslations('fr')('nav.experiences')).toBe('Expériences');
   });
 });
