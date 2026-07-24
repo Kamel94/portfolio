@@ -55,13 +55,17 @@ Contenu sourcé du CV (`Kamel_AZIZI_CV_Fullstack_Senior.pdf`), reformulé pour l
 Fiches projet sans dépendance à une démo live. Chaque fiche : contexte, stack,
 « ce que j'ai appris », emplacements optionnels (lien repo, lien démo, captures)
 activables via le frontmatter.
-1. **App d'animation d'événements** (Devfest) — React/NestJS migré vers NextJS,
+1. **degopro.fr** — site vitrine en production pour une entreprise d'assainissement
+   (https://degopro.fr). Réalisé en Nuxt ; refonte en cours en NextJS + Payload CMS
+   (bientôt déployée — la fiche sera mise à jour à ce moment-là). Seul projet avec
+   démo live : mis en avant en tête de page.
+2. **App d'animation d'événements** (Devfest) — React/NestJS migré vers NextJS,
    MongoDB, AWS Amplify. Démo hors ligne : fiche descriptive seule.
-2. **Générateur de factures PDF** — React, react-pdf, Supabase. Confidentiel et à
+3. **Générateur de factures PDF** — React, react-pdf, Supabase. Confidentiel et à
    redéployer : fiche descriptive, démo ajoutable plus tard.
-3. **Katas — pratique délibérée** — sélection de katas GitHub (birthday-greetings-kata…)
+4. **Katas — pratique délibérée** — sélection de katas GitHub (birthday-greetings-kata…)
    présentée comme pratique craft, pas comme produits.
-4. **Ce portfolio** — Astro, i18n, CI/CD Hostinger ; lien vers le repo public.
+5. **Ce portfolio** — Astro, i18n, CI/CD Hostinger ; lien vers le repo public.
 
 ### Articles (`/articles`, `/en/articles`)
 Index du blog. Deux types de cartes :
