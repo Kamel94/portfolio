@@ -28,8 +28,11 @@ lecteurs des articles (confort de lecture, RSS).
 ### Home (`/`, `/en/`)
 - **Hero** : nom, titre (« Développeur Fullstack Senior — Kotlin · Java · TypeScript »),
   accroche courte, CTA « Voir mon parcours » + lien articles.
-- **Bio courte** : 3-4 phrases — senior fullstack, culture craft (formation Arolla,
-  TDD, clean code), expérience SNCF Connect, auteur d'articles techniques.
+- **Bio courte** : 4-5 phrases — senior fullstack, culture craft (formation Arolla,
+  TDD, clean code), expérience SNCF Connect, auteur d'articles techniques, et
+  développement augmenté par l'IA : pratique de l'agentic coding au quotidien
+  (Claude Code, Copilot, Codex), formation « AI Augmented Developer » (SFEIR,
+  mai 2026).
 - **Aperçus** : dernière mission (SNCF Connect APV), 2 projets, 2 derniers articles.
 - **Footer contact** (commun à toutes les pages) : email (protégé contre les bots),
   LinkedIn, GitHub.
