@@ -1,0 +1,10 @@
+---
+interface Props { stack: string[] }
+const { stack } = Astro.props;
+---
+<ul class="stack">
+  {stack.map((s) => <li class="badge">{s}</li>)}
+</ul>
+<style>
+  .stack { list-style: none; padding: 0; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+</style>

@@ -1,0 +1,28 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+import { obfuscateEmail } from '../utils/email';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const email = obfuscateEmail('contact@kameldev.fr');
+const mailto = `&#109;&#97;&#105;&#108;&#116;&#111;&#58;${email}`;
+---
+<footer>
+  <div class="container footer-inner">
+    <p class="kicker">{t('footer.contact')}</p>
+    <ul>
+      <li set:html={`<a href="${mailto}">${email}</a>`} />
+      <li><a href="https://www.linkedin.com/in/kamel-azizi" rel="me">LinkedIn</a></li>
+      <li><a href="https://github.com/Kamel94" rel="me">GitHub</a></li>
+      <li><a href="/rss.xml">{t('footer.rss')}</a></li>
+    </ul>
+    <p class="colophon">© {new Date().getFullYear()} Kamel Azizi</p>
+  </div>
+</footer>
+<style>
+  footer { border-top: 1px solid var(--line); margin-top: 5rem; }
+  .footer-inner { padding-block: 2.5rem; }
+  ul { list-style: none; padding: 0; display: flex; gap: 1.5rem; flex-wrap: wrap; margin-block: 0.75rem; }
+  .colophon { color: var(--muted); font-size: 0.85rem; }
+</style>

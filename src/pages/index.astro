@@ -1,6 +1,8 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { useTranslations } from '../i18n/ui';
+const t = useTranslations('fr');
 ---
-<html lang="fr">
-  <head><meta charset="utf-8" /><title>Kamel Azizi</title></head>
-  <body><h1>Kamel Azizi</h1></body>
-</html>
+<BaseLayout lang="fr" title={t('site.title')} description={t('site.description')} alternateHref="/en/">
+  <h1>Kamel Azizi.</h1>
+</BaseLayout>
