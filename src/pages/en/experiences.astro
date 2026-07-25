@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ExperiencesView from '../../components/views/ExperiencesView.astro';
+import { useTranslations } from '../../i18n/ui';
+const t = useTranslations('en');
+---
+<BaseLayout
+  lang="en"
+  title={`${t('experiences.title')} — Kamel Azizi`}
+  description={t('experiences.intro')}
+  alternateHref="/experiences/"
+>
+  <ExperiencesView lang="en" />
+</BaseLayout>

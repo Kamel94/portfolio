@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
+import StackBadges from '../StackBadges.astro';
+import { formatMonthYear } from '../../utils/date';
+import { useTranslations, type Lang } from '../../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const entries = (await getCollection('experiences', ({ data }) => data.lang === lang))
+  .sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf());
+
+const rendered = await Promise.all(
+  entries.map(async (e) => ({ entry: e, Content: (await render(e)).Content }))
+);
+---
+<h1>{t('experiences.title')}</h1>
+<p class="intro">{t('experiences.intro')}</p>
+<ol class="timeline">
+  {rendered.map(({ entry, Content }) => (
+    <li>
+      <p class="period kicker">
+        {formatMonthYear(entry.data.startDate, lang)} — {entry.data.endDate
+          ? formatMonthYear(entry.data.endDate, lang)
+          : t('experiences.today')}
+      </p>
+      <h2>{entry.data.role} · {entry.data.company}</h2>
+      <p class="summary">{entry.data.summary}</p>
+      <div class="details"><Content /></div>
+      <StackBadges stack={entry.data.stack} />
+    </li>
+  ))}
+</ol>
+<style>
+  .intro { color: var(--muted); max-width: 38rem; margin-block: 0.75rem 3rem; }
+  .timeline { list-style: none; padding: 0; }
+  .timeline li {
+    border-left: 2px solid var(--accent);
+    padding: 0 0 3rem 1.75rem;
+    position: relative;
+  }
+  .timeline li::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0.4rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .period { margin-bottom: 0.4rem; }
+  h2 { font-size: 1.45rem; }
+  .summary { margin-block: 0.6rem; max-width: 40rem; }
+  .details { color: var(--muted); font-size: 0.95rem; max-width: 40rem; margin-bottom: 1rem; }
+  .details :global(ul) { padding-left: 1.1rem; }
+</style>
