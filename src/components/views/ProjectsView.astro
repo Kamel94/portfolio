@@ -24,8 +24,8 @@ const rendered = await Promise.all(
       <StackBadges stack={entry.data.stack} />
       {(entry.data.demoUrl || entry.data.repoUrl) && (
         <p class="links">
-          {entry.data.demoUrl && <a href={entry.data.demoUrl}>{t('projects.demo')} ↗</a>}
-          {entry.data.repoUrl && <a href={entry.data.repoUrl}>{t('projects.repo')} ↗</a>}
+          {entry.data.demoUrl && <a href={entry.data.demoUrl} target="_blank" rel="noopener noreferrer">{t('projects.demo')} ↗</a>}
+          {entry.data.repoUrl && <a href={entry.data.repoUrl} target="_blank" rel="noopener noreferrer">{t('projects.repo')} ↗</a>}
         </p>
       )}
     </article>

@@ -1,4 +1,4 @@
-# kamelazizi.dev
+# kameldev.fr
 
 Portfolio de Kamel Azizi — développeur fullstack senior (Kotlin · Java · TypeScript).
 Site statique [Astro](https://astro.build), bilingue FR/EN, zéro JavaScript client.

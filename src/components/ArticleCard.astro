@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatMonthYear } from '../utils/date';
+import { formatFullDate } from '../utils/date';
 import { useTranslations, type Lang } from '../i18n/ui';
 
 interface Props { article: CollectionEntry<'articles'>; lang: Lang }
@@ -10,8 +10,8 @@ const external = Boolean(article.data.externalUrl);
 const href = external ? article.data.externalUrl : `/articles/${article.id}/`;
 ---
 <article class="card">
-  <p class="kicker">{formatMonthYear(article.data.pubDate, lang)}</p>
-  <h2><a href={href}>{article.data.title}{external && ' ↗'}</a></h2>
+  <p class="kicker">{formatFullDate(article.data.pubDate, lang)}</p>
+  <h2><a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>{article.data.title}{external && ' ↗'}</a></h2>
   <p class="desc">{article.data.description}</p>
   <p class="meta">
     {external && <span class="badge">{t('articles.external')} {article.data.externalHost}</span>}

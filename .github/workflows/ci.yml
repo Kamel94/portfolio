@@ -21,9 +21,9 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm test
       - run: npm run build
-      # TODO: retirer les skips kamelazizi.dev et Kamel94/portfolio une fois domaine + repo en ligne
+      # TODO: retirer le skip kameldev.fr une fois le domaine en ligne
       - name: Vérification des liens internes
-        run: npx linkinator@6 ./dist --recurse --silent --skip "https://kamelazizi.dev,https://www.linkedin.com,https://github.com/Kamel94/portfolio"
+        run: npx linkinator@6 ./dist --recurse --silent --skip "https://kameldev.fr,https://www.linkedin.com"
       - uses: actions/upload-artifact@v4
         with:
           name: dist

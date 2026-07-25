@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { formatMonthYear } from '../../utils/date';
+import { formatFullDate } from '../../utils/date';
 import { useTranslations } from '../../i18n/ui';
 
 export async function getStaticPaths() {
@@ -27,7 +27,7 @@ const toc = headings.filter((h) => h.depth === 2);
   <article>
     <header class="article-header">
       <p class="kicker">
-        {formatMonthYear(article.data.pubDate, 'fr')} · {remarkPluginFrontmatter.minutesRead} {t('articles.readingTime')}
+        {formatFullDate(article.data.pubDate, 'fr')} · {remarkPluginFrontmatter.minutesRead} {t('articles.readingTime')}
       </p>
       <h1>{article.data.title}</h1>
       <p class="desc">{article.data.description}</p>
@@ -40,13 +40,14 @@ const toc = headings.filter((h) => h.depth === 2);
         </ol>
       </nav>
     )}
-    <div class="prose"><Content /></div>
+    <div class="prose article-body"><Content /></div>
   </article>
 </BaseLayout>
 <style>
-  .article-header { max-width: 42rem; margin-block: 2rem 2.5rem; }
+  .article-header { max-width: 42rem; margin: 2rem auto 2.5rem; }
   .desc { color: var(--muted); font-style: italic; margin-top: 0.75rem; }
-  .toc { border: 1px solid var(--line); border-radius: 6px; padding: 1rem 1.25rem; max-width: 42rem; margin-bottom: 2.5rem; }
+  .toc { border: 1px solid var(--line); border-radius: 6px; padding: 1rem 1.25rem; max-width: 42rem; margin: 0 auto 2.5rem; }
   .toc ol { padding-left: 1.2rem; margin-top: 0.5rem; }
   .toc a { color: var(--ink); }
+  .article-body { margin-inline: auto; }
 </style>
