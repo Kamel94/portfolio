@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import rehypeMermaid from 'rehype-mermaid';
 import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
 
 export default defineConfig({
@@ -11,7 +12,9 @@ export default defineConfig({
   },
   integrations: [sitemap()],
   markdown: {
+    syntaxHighlight: { type: 'shiki', excludeLangs: ['mermaid'] },
     shikiConfig: { theme: 'vitesse-light' },
     remarkPlugins: [remarkReadingTime],
+    rehypePlugins: [[rehypeMermaid, { strategy: 'img-svg', dark: false }]],
   },
 });
