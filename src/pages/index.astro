@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeView from '../components/views/HomeView.astro';
 import { useTranslations } from '../i18n/ui';
 const t = useTranslations('fr');
 ---
 <BaseLayout lang="fr" title={t('site.title')} description={t('site.description')} alternateHref="/en/">
-  <h1>Kamel Azizi.</h1>
+  <HomeView lang="fr" />
 </BaseLayout>
