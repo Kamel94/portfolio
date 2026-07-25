@@ -1,7 +1,7 @@
 ---
 lang: en
 company: Association
-role: Développeur Java Fullstack
+role: Fullstack Java Developer
 startDate: 2020-10-01
 endDate: 2020-12-31
 stack: [Java 8, Spring Boot, Spring Cloud, PostgreSQL, Angular, Docker]

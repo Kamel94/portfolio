@@ -1,7 +1,7 @@
 ---
 lang: en
 company: Officéo
-role: Développeur Java Fullstack
+role: Fullstack Java Developer
 startDate: 2021-03-01
 endDate: 2023-02-28
 stack: [Java 11, Spring Boot, MySQL, VueJS, Vuetify, GraphQL, Keycloak, Docker]

@@ -1,7 +1,7 @@
 ---
 lang: en
 company: SNCF Connect
-role: Développeur Kotlin Fullstack
+role: Fullstack Kotlin Developer
 startDate: 2024-06-01
 stack: [Kotlin, Java 21, Spring Boot, NextJS, react-query, Flutter, MongoDB, DynamoDB, AWS, Kubernetes, Datadog]
 summary: After-sales (APV) for the SNCF Connect app — booking, exchanging or cancelling train tickets — in a 15-person team, on a very high-traffic web/mobile application.

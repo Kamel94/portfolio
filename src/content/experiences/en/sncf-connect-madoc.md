@@ -1,7 +1,7 @@
 ---
 lang: en
 company: SNCF Connect
-role: Développeur Kotlin Fullstack
+role: Fullstack Kotlin Developer
 startDate: 2023-06-01
 endDate: 2024-06-01
 stack: [Kotlin, Quarkus, GraalVM, MongoDB, React, Material-UI, Jotaï, AWS, Flux CD, Helm]
