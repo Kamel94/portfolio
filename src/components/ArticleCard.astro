@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatMonthYear } from '../utils/date';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props { article: CollectionEntry<'articles'>; lang: Lang }
+const { article, lang } = Astro.props;
+const t = useTranslations(lang);
+const external = Boolean(article.data.externalUrl);
+const href = external ? article.data.externalUrl : `/articles/${article.id}/`;
+---
+<article class="card">
+  <p class="kicker">{formatMonthYear(article.data.pubDate, lang)}</p>
+  <h2><a href={href}>{article.data.title}{external && ' ↗'}</a></h2>
+  <p class="desc">{article.data.description}</p>
+  <p class="meta">
+    {external && <span class="badge">{t('articles.external')} {article.data.externalHost}</span>}
+    {lang === 'en' && !external && <span class="badge">{t('articles.inFrench')}</span>}
+  </p>
+</article>
+<style>
+  h2 { font-size: 1.3rem; margin-block: 0.4rem; }
+  h2 a { color: var(--ink); text-decoration: none; }
+  h2 a:hover { color: var(--accent); }
+  .desc { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.6rem; }
+</style>
