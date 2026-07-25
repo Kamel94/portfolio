@@ -25,7 +25,7 @@ jobs:
       # (rate-limiting des IP de CI, lien mort chez un tiers) ne doit pas
       # bloquer un déploiement.
       - name: Vérification des liens internes
-        run: npx linkinator@6 ./dist --recurse --silent --skip "^https?://"
+        run: npx linkinator@6 ./dist --recurse --silent --skip "^https?://(?!localhost)"
       - uses: actions/upload-artifact@v4
         with:
           name: dist
