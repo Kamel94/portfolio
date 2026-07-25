@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- Node ≥ 22, npm (pas de pnpm/yarn). Astro ^6.
+- Node ≥ 22, npm (pas de pnpm/yarn). Astro ^7 (dernière stable au moment du scaffold ; le plan avait été écrit pour ^6, APIs identiques vérifiées au build).
 - Zéro JavaScript client (pas de framework UI côté client, pas de JS mermaid client).
 - Polices auto-hébergées via @fontsource — **jamais** de Google Fonts ni CDN externe.
 - Couleurs : fond crème `#faf6f0`, encre `#1a1a1a`, accent terracotta `#9a3b2e`, ligne `#e8e0d4`, texte secondaire `#6b6259`, surface `#ffffff`. Clair uniquement, pas de dark mode.
