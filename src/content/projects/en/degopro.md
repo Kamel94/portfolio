@@ -4,7 +4,7 @@ title: degopro.fr
 order: 1
 featured: true
 stack: [Nuxt, VueJS, TypeScript]
-summary: Production showcase site for a sanitation company — built end-to-end, from design to deployment.
+summary: Production marketing site for a sanitation company — built end-to-end, from design to deployment.
 demoUrl: https://degopro.fr
 ---
 A real client site, live and used daily: service overview, quote requests,
