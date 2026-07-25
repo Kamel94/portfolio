@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectsView from '../../components/views/ProjectsView.astro';
+import { useTranslations } from '../../i18n/ui';
+const t = useTranslations('en');
+---
+<BaseLayout
+  lang="en"
+  title={`${t('projects.title')} — Kamel Azizi`}
+  description={t('projects.intro')}
+  alternateHref="/projets/"
+>
+  <ProjectsView lang="en" />
+</BaseLayout>

@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from 'astro:content';
+import StackBadges from '../StackBadges.astro';
+import { useTranslations, type Lang } from '../../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const entries = (await getCollection('projects', ({ data }) => data.lang === lang))
+  .sort((a, b) => a.data.order - b.data.order);
+const rendered = await Promise.all(
+  entries.map(async (e) => ({ entry: e, Content: (await render(e)).Content }))
+);
+---
+<h1>{t('projects.title')}</h1>
+<p class="intro">{t('projects.intro')}</p>
+<div class="grid">
+  {rendered.map(({ entry, Content }) => (
+    <article class:list={['card', { featured: entry.data.featured }]}>
+      <h2>{entry.data.title}</h2>
+      <p class="summary">{entry.data.summary}</p>
+      <div class="body prose"><Content /></div>
+      <StackBadges stack={entry.data.stack} />
+      <p class="links">
+        {entry.data.demoUrl && <a href={entry.data.demoUrl}>{t('projects.demo')} ↗</a>}
+        {entry.data.repoUrl && <a href={entry.data.repoUrl}>{t('projects.repo')} ↗</a>}
+      </p>
+    </article>
+  ))}
+</div>
+<style>
+  .intro { color: var(--muted); max-width: 38rem; margin-block: 0.75rem 3rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1.5rem; }
+  .featured { grid-column: 1 / -1; border-color: var(--accent); }
+  h2 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+  .summary { margin-bottom: 0.8rem; }
+  .body { color: var(--muted); font-size: 0.93rem; margin-bottom: 1rem; }
+  .links { margin-top: 1rem; display: flex; gap: 1.25rem; }
+</style>
