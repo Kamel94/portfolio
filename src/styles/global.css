@@ -91,3 +91,21 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .prose code { font-family: var(--font-mono); font-size: 0.88em; }
 .prose img, .prose svg { max-width: 100%; height: auto; }
+.prose table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-bottom: 1.1rem;
+}
+.prose th, .prose td {
+  border: 1px solid var(--line);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.prose th {
+  background: var(--surface);
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
