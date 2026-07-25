@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,8 +21,9 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm test
       - run: npm run build
+      # TODO: retirer les skips kamelazizi.dev et Kamel94/portfolio une fois domaine + repo en ligne
       - name: Vérification des liens internes
-        run: npx linkinator ./dist --recurse --silent --skip "https://kamelazizi.dev,https://www.linkedin.com,https://github.com/Kamel94/portfolio"
+        run: npx linkinator@6 ./dist --recurse --silent --skip "https://kamelazizi.dev,https://www.linkedin.com,https://github.com/Kamel94/portfolio"
       - uses: actions/upload-artifact@v4
         with:
           name: dist
@@ -29,16 +33,20 @@ jobs:
     needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-main
+      cancel-in-progress: false
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist
       - name: Déploiement FTP Hostinger
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@8e83cea8672e3fbcbb9fdafff34debf6ae4c5f65 # v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
           local-dir: dist/
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
