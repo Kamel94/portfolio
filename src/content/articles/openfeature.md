@@ -1,8 +1,8 @@
 ---
 title: "Bye bye Vendor Lock-in — Mon retour sur la conférence OpenFeature à Devoxx France 2026"
-description: "Retour sur la conférence de Thomas Poignant à Devoxx France 2026 : OpenFeature, le standard CNCF qui affranchit les feature flags du vendor lock-in, avec OFREP, la Tracking API, OpenTelemetry et un serveur MCP dédié."
+description: "Retour sur OpenFeature, le standard CNCF contre le vendor lock-in : OFREP, Tracking API, OpenTelemetry et serveur MCP dédié."
 pubDate: 2026-04-24
-tags: [feature-flags, openfeature, devoxx, kotlin]
+tags: [feature-flags, openfeature, devoxx, java]
 ---
 *Devoxx France 2026 — Talk de Thomas Poignant*
 
@@ -161,7 +161,7 @@ Client client = api.getClient("my-app");
 boolean value = client.getBooleanValue("my-flag", false);
 ```
 
-La formule de Thomas résume parfaitement l’idée : **« Every evaluation becomes a span, every rollout a signal. »**
+La formule de Thomas résume parfaitement l’idée : **« Every evaluation becomes a span, every rollout a signal. »**
 
 Fini l’instrumentation manuelle. Votre observabilité des flags est standardisée, interopérable, et s’intègre directement dans votre pipeline OpenTelemetry existant.
 
@@ -184,7 +184,7 @@ Concrètement, cela signifie que vos outils IA — Cursor, Claude, Codex — peu
 }
 ```
 
-C’est une vision concrète de l’IA intégrée dans le workflow de développement : au lieu de chercher la syntaxe du flag dans la doc ou de configurer manuellement un provider, vous demandez simplement à votre agent. **« Installe le SDK OpenFeature Java avec le provider Flagsmith, puis évalue le flag `new-checkout` pour l’utilisateur `john@me.com`. »**
+C’est une vision concrète de l’IA intégrée dans le workflow de développement : au lieu de chercher la syntaxe du flag dans la doc ou de configurer manuellement un provider, vous demandez simplement à votre agent. **« Installe le SDK OpenFeature Java avec le provider Flagsmith, puis évalue le flag `new-checkout` pour l’utilisateur `john@me.com`. »**
 
 ---
 
