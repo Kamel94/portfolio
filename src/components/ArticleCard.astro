@@ -15,7 +15,7 @@ const href = external ? article.data.externalUrl : `/articles/${article.id}/`;
   <p class="desc">{article.data.description}</p>
   <p class="meta">
     {external && <span class="badge">{t('articles.external')} {article.data.externalHost}</span>}
-    {lang === 'en' && !external && <span class="badge">{t('articles.inFrench')}</span>}
+    {lang === 'en' && <span class="badge">{t('articles.inFrench')}</span>}
   </p>
 </article>
 <style>

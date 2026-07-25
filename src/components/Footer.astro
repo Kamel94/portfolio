@@ -12,6 +12,7 @@ const mailto = `&#109;&#97;&#105;&#108;&#116;&#111;&#58;${email}`;
   <div class="container footer-inner">
     <p class="kicker">{t('footer.contact')}</p>
     <ul>
+      <!-- set:html requis : Astro échappe & dans les attributs, ce qui casserait les entités de l'email obfusqué -->
       <li set:html={`<a href="${mailto}">${email}</a>`} />
       <li><a href="https://www.linkedin.com/in/kamel-azizi" rel="me">LinkedIn</a></li>
       <li><a href="https://github.com/Kamel94" rel="me">GitHub</a></li>

@@ -22,10 +22,12 @@ const rendered = await Promise.all(
       <p class="summary">{entry.data.summary}</p>
       <div class="body prose"><Content /></div>
       <StackBadges stack={entry.data.stack} />
-      <p class="links">
-        {entry.data.demoUrl && <a href={entry.data.demoUrl}>{t('projects.demo')} ↗</a>}
-        {entry.data.repoUrl && <a href={entry.data.repoUrl}>{t('projects.repo')} ↗</a>}
-      </p>
+      {(entry.data.demoUrl || entry.data.repoUrl) && (
+        <p class="links">
+          {entry.data.demoUrl && <a href={entry.data.demoUrl}>{t('projects.demo')} ↗</a>}
+          {entry.data.repoUrl && <a href={entry.data.repoUrl}>{t('projects.repo')} ↗</a>}
+        </p>
+      )}
     </article>
   ))}
 </div>

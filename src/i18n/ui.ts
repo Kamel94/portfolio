@@ -26,7 +26,6 @@ export const ui = {
       'Sites en production, applications personnelles et pratique délibérée.',
     'projects.demo': 'Voir le site',
     'projects.repo': 'Code source',
-    'projects.learned': 'Ce que j’ai appris',
     'articles.title': 'Articles',
     'articles.intro':
       'Tests, specs, feature flags : des articles pour faire durer le logiciel.',
@@ -61,7 +60,6 @@ export const ui = {
     'projects.intro': 'Production websites, personal apps and deliberate practice.',
     'projects.demo': 'Visit site',
     'projects.repo': 'Source code',
-    'projects.learned': 'What I learned',
     'articles.title': 'Articles',
     'articles.intro':
       'Tests, specs, feature flags: articles about making software last.',

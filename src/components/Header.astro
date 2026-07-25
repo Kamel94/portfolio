@@ -13,7 +13,7 @@ const other = lang === 'fr' ? 'en' : 'fr';
     <a href={getRelativeLocaleUrl(lang, 'experiences')}>{t('nav.experiences')}</a>
     <a href={getRelativeLocaleUrl(lang, lang === 'fr' ? 'projets' : 'projects')}>{t('nav.projects')}</a>
     <a href={getRelativeLocaleUrl(lang, 'articles')}>{t('nav.articles')}</a>
-    {alternateHref && <a class="lang-switch" href={alternateHref}>{t('nav.switchLang')}</a>}
+    {alternateHref && <a class="lang-switch" href={alternateHref} hreflang={other} lang={other}>{t('nav.switchLang')}</a>}
   </nav>
 </header>
 <style>

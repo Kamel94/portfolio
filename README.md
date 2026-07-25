@@ -5,6 +5,8 @@ Site statique [Astro](https://astro.build), bilingue FR/EN, zéro JavaScript cli
 
 ## Développement
 
+Prérequis : Node ≥ 22.
+
 ```bash
 npm install
 npx playwright install chromium   # rendu mermaid au build
