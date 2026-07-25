@@ -14,8 +14,8 @@ const mailto = `&#109;&#97;&#105;&#108;&#116;&#111;&#58;${email}`;
     <ul>
       <!-- set:html requis : Astro échappe & dans les attributs, ce qui casserait les entités de l'email obfusqué -->
       <li set:html={`<a href="${mailto}">${email}</a>`} />
-      <li><a href="https://www.linkedin.com/in/azizi-kamel" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-      <li><a href="https://github.com/Kamel94" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/azizi-kamel" target="_blank" rel="me noopener noreferrer">LinkedIn</a></li>
+      <li><a href="https://github.com/Kamel94" target="_blank" rel="me noopener noreferrer">GitHub</a></li>
       <li><a href="/rss.xml">{t('footer.rss')}</a></li>
     </ul>
     <p class="colophon">© {new Date().getFullYear()} Kamel Azizi</p>
