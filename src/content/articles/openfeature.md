@@ -220,5 +220,5 @@ C’est pourquoi j’ai l’intention de **présenter OpenFeature à mon équipe
 
 ---
 
-*Thomas Poignant — Devoxx France 2026*
+*Devoxx France 2026 —*
 *Ressources : [openfeature.dev](https://openfeature.dev) · [conférence](https://www.youtube.com/watch?v=22vp6gxXIrI)*
