@@ -13,7 +13,7 @@ const entries = [
     title: { fr: 'AI Augmented Developer', en: 'AI Augmented Developer' },
     org: 'SFEIR',
     place: { fr: 'Paris', en: 'Paris' },
-    certified: true,
+    certifiedUrl: 'https://credsverse.com/credentials/c5dc7e15-0be0-44ee-bd09-eadb4d8c6e2d',
   },
   {
     period: { fr: 'Février – juin 2023', en: 'February – June 2023' },
@@ -39,7 +39,11 @@ const entries = [
         <div class="entry">
           <h3>
             {e.title[lang]}
-            {e.certified && <span class="certified">{t('training.certified')}</span>}
+            {e.certifiedUrl && (
+              <a class="certified" href={e.certifiedUrl} target="_blank" rel="noopener noreferrer">
+                {t('training.certified')} ↗
+              </a>
+            )}
           </h3>
           <p class="org">{e.org} · {e.place[lang]}</p>
           {e.note && <p class="note">{e.note[lang]}</p>}
@@ -96,5 +100,8 @@ const entries = [
     border-radius: 999px;
     padding: 0.08rem 0.55rem;
     white-space: nowrap;
+    text-decoration: none;
+    transition: background-color 0.15s, color 0.15s;
   }
+  .certified:hover { background: var(--accent); color: var(--bg); }
 </style>
