@@ -28,4 +28,8 @@ et pousser sur `main`. `draft: true` exclut un article du build.
 ## Déploiement
 
 Chaque push sur `main` déclenche la CI (tests, build, vérification des liens)
-puis un déploiement FTP vers Hostinger (secrets `FTP_*` du repo).
+puis un déploiement FTPS vers Hostinger (secrets `FTP_*` du repo).
+
+Une reconstruction est aussi programmée le 1er janvier et le 1er octobre : la
+durée d'expérience affichée et l'année du copyright sont calculées au build et
+se périmeraient sans nouveau déploiement.

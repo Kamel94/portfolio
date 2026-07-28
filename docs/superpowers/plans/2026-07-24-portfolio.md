@@ -1,6 +1,21 @@
 # Portfolio Kamel Azizi — Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> ## ⚠️ Document historique — exécuté le 2026-07-25, ne fait plus foi
+>
+> Les onze tâches ci-dessous ont toutes été réalisées et le site est en
+> production. Ce plan est conservé comme trace de la construction initiale ;
+> **il ne décrit plus le site actuel.** Le site a notablement évolué depuis :
+> domaine `kameldev.fr`, page projets en liste éditoriale (et non en grille de
+> cartes), missions regroupées par employeur, section formations, durée
+> d'expérience calculée au build, projet Masjid On Air, section de contact.
+>
+> **Pour l'état courant, se référer à
+> [`../specs/2026-07-24-portfolio-design.md`](../specs/2026-07-24-portfolio-design.md).**
+>
+> Les extraits de code, valeurs et chemins de ce document sont ceux d'origine et
+> divergent du dépôt : ne pas les recopier. Les données personnelles qu'il
+> contenait (adresse e-mail, domaine provisoire) ont été remplacées, le dépôt
+> étant public.
 
 **Goal:** Construire le portfolio statique bilingue (FR/EN) de Kamel Azizi — expériences, projets, articles — selon la spec `docs/superpowers/specs/2026-07-24-portfolio-design.md`, déployé sur Hostinger via GitHub Actions.
 
@@ -15,14 +30,14 @@
 - Polices auto-hébergées via @fontsource — **jamais** de Google Fonts ni CDN externe.
 - Couleurs : fond crème `#faf6f0`, encre `#1a1a1a`, accent terracotta `#9a3b2e`, ligne `#e8e0d4`, texte secondaire `#6b6259`, surface `#ffffff`. Clair uniquement, pas de dark mode.
 - Contraste AA minimum sur tous les textes.
-- URL du site : `https://kamelazizi.dev` (constante unique dans `astro.config.mjs` — à confirmer par Kamel avant le déploiement, une seule ligne à changer).
+- URL du site : `https://kameldev.fr` (constante unique dans `astro.config.mjs` — à confirmer par Kamel avant le déploiement, une seule ligne à changer).
 - Locale par défaut `fr` à la racine, `en` préfixé `/en/`. Articles en FR uniquement.
 - Messages de commit en français, style conventional commits (`feat:`, `docs:`, `ci:`…). **Interdiction absolue d'ajouter un trailer `Co-Authored-By` ou toute mention d'IA dans les commits.**
 - Le repo deviendra public : ne jamais commiter de secret (FTP, etc.).
 - Sources de contenu (lecture seule, ne pas modifier) :
-  - CV : `<fichier local, hors dépôt>`
-  - Article SDD : `<fichier local, hors dépôt>`
-  - Article OpenFeature : `<fichier local, hors dépôt>` (+ PDF `article-openfeature-devoxx2026-avec-images.pdf` du même dossier)
+  - CV : `<CV PDF local, hors dépôt>`
+  - Article SDD : `<article SDD local, hors dépôt>`
+  - Article OpenFeature : `<article OpenFeature local, hors dépôt>` (+ PDF `article-openfeature-devoxx2026-avec-images.pdf` du même dossier)
 
 ---
 
@@ -74,7 +89,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://kamelazizi.dev',
+  site: 'https://kameldev.fr',
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],
@@ -625,7 +640,7 @@ Run: `npm run build && grep -c "Fraunces" dist/index.html`
 Expected: build OK, au moins 1 occurrence (CSS des polices inliné ou lié).
 
 Run: `grep -o "&#108;&#105;&#118;&#51;" dist/index.html | head -1`
-Expected: `&#108;&#105;&#118;&#51;` — l'email n'apparaît jamais en clair (`grep -c "contact" dist/index.html` doit retourner 0).
+Expected: l'adresse n'apparaît jamais en clair dans le HTML produit.
 
 - [ ] **Step 9: Commit**
 
@@ -1695,7 +1710,7 @@ jobs:
 - [ ] **Step 2: Créer README.md**
 
 ```markdown
-# kamelazizi.dev
+# kameldev.fr
 
 Portfolio de Kamel Azizi — développeur fullstack senior (Kotlin · Java · TypeScript).
 Site statique [Astro](https://astro.build), bilingue FR/EN, zéro JavaScript client.
@@ -1744,7 +1759,7 @@ git commit -m "ci: build, tests, vérification des liens et déploiement FTP Hos
 
 1. Créer le repo GitHub public `Kamel94/portfolio` et pousser `main`.
 2. Créer un compte FTP dans hPanel Hostinger et renseigner les secrets `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, `FTP_SERVER_DIR` dans GitHub → Settings → Secrets and variables → Actions.
-3. Confirmer le domaine (`kamelazizi.dev` ou autre) — mettre à jour `site` dans `astro.config.mjs` si différent.
+3. Confirmer le domaine (`kameldev.fr` ou autre) — mettre à jour `site` dans `astro.config.mjs` si différent.
 4. Confirmer l'URL LinkedIn exacte dans `src/components/Footer.astro`.
 5. Après le premier déploiement : vérifier le site en production et lancer un audit Lighthouse (objectif ≥ 95 partout).
 

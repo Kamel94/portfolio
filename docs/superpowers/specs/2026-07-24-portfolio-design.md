@@ -1,131 +1,182 @@
 # Spec — Portfolio de Kamel Azizi
 
-**Date** : 2026-07-24
-**Statut** : validé en brainstorming, en attente de relecture finale
+**Créée le** : 2026-07-24 · **Mise à jour le** : 2026-07-28
+**Statut** : en production sur https://kameldev.fr
+
+Document de référence : il décrit le site **tel qu'il est**, pas tel qu'il a été
+conçu au départ. Le plan d'implémentation initial (`../plans/`) est un document
+historique et ne fait plus foi.
 
 ## Objectif
 
-Portfolio personnel bilingue (FR/EN) présentant le profil de Kamel Azizi, développeur
-fullstack senior Kotlin/Java : expériences, projets et articles techniques. Deux
-audiences : les recruteurs (lisibilité du parcours en quelques minutes) et les
-lecteurs des articles (confort de lecture, RSS).
+Portfolio personnel bilingue (FR/EN) présentant le profil de Kamel Azizi,
+développeur full-stack senior Kotlin/Java : expériences, projets et articles
+techniques. Deux audiences : les recruteurs (lisibilité du parcours en quelques
+minutes) et les lecteurs des articles (confort de lecture, RSS).
 
 ## Décisions structurantes
 
 | Sujet | Décision |
 |---|---|
-| Framework | Astro (site 100 % statique, Content Collections, i18n natif) |
+| Framework | Astro 7 — site 100 % statique, Content Collections, i18n natif |
+| JavaScript client | **Zéro** : aucun `<script>` dans le HTML produit, aucune île |
 | Direction visuelle | « Éditorial & craft » : fond crème, serif, accent terracotta |
 | Structure | Multi-pages, avec bio courte sur la home |
-| Langues | FR par défaut à la racine, EN sous `/en/` ; articles en FR uniquement |
-| Contenu | Markdown dans le repo (Content Collections), pas de CMS |
-| Hébergement | Hostinger (mutualisé, déjà souscrit), déploiement FTP via GitHub Actions |
-| Repo | Public sur GitHub — le portfolio est lui-même une fiche projet |
-| Contact | Email, LinkedIn, GitHub dans le footer ; pas de photo, pas de CV téléchargeable, pas de formulaire |
+| Langues | FR à la racine, EN sous `/en/` ; articles en FR, présentation traduite |
+| Contenu | Markdown versionné dans le repo, pas de CMS |
+| Domaine | `kameldev.fr` (constante `site` dans `astro.config.mjs`) |
+| Hébergement | Hostinger mutualisé, déploiement FTPS par GitHub Actions |
+| Repo | Public — le portfolio est lui-même une fiche projet |
+| Contact | `contact@kameldev.fr` (obfusqué), LinkedIn, GitHub. Pas de photo, **pas de CV publié**, pas de formulaire |
 
 ## Pages
 
 ### Home (`/`, `/en/`)
-- **Hero** : nom, titre (« Développeur Fullstack Senior — Kotlin · Java · TypeScript »),
-  accroche courte, CTA « Voir mon parcours » + lien articles.
-- **Bio courte** : 4-5 phrases — senior fullstack, culture craft (formation Arolla,
-  TDD, clean code), expérience SNCF Connect, auteur d'articles techniques, et
-  développement augmenté par l'IA : pratique de l'agentic coding au quotidien
-  (Claude Code, Copilot, Codex), formation « AI Augmented Developer » (SFEIR,
-  mai 2026).
-- **Aperçus** : dernière mission (SNCF Connect APV), 2 projets, 2 derniers articles.
-- **Footer contact** (commun à toutes les pages) : email (protégé contre les bots),
-  LinkedIn, GitHub.
+- **Hero** : kicker, `<h1>` « Kamel A. », accroche en serif, bio de 4-5 phrases,
+  puis trois appels à l'action — « Voir mon parcours » (bouton), « Lire mes
+  articles », « Me contacter ».
+- **Sections numérotées** : `01` mission actuelle · `02` deux projets (`order` 1-2)
+  · `03` deux derniers articles · `04` **Travaillons ensemble** (bouton
+  « M'écrire » + mention « Mon CV détaillé est disponible sur demande »).
 
 ### Expériences (`/experiences`, `/en/experiences`)
-Timeline verticale, une entrée par mission, de la plus récente à la plus ancienne :
-1. **SNCF Connect — APV** (depuis juin 2024) : Kotlin/Spring Boot, NextJS, Flutter,
-   AWS/K8s ; fonctionnalité animaux, multi-inventaires, chatbot, circuit breaker,
-   feature toggles.
-2. **SNCF Connect — MaDOC** (juin 2023 → juin 2024) : Kotlin/Quarkus, architecture
-   hexagonale, GraalVM, React/MUI, librairies NPM internes, GitOps Flux CD.
-3. **Officéo** (mars 2021 → février 2023) : Java/Spring Boot, VueJS/Vuetify,
-   REST/GraphQL, CRONs dynamiques.
-4. **Association funéraire** (oct. → déc. 2020) : microservices Spring Cloud, Angular.
+Timeline verticale (filet terracotta, pastille par entreprise), de la plus récente
+à la plus ancienne. Les missions **consécutives chez le même employeur sont
+regroupées** en une entrée unique avec période globale, puis une sous-section par
+mission (champ `mission`) :
 
-Chaque entrée : contexte (2-3 phrases), réalisations clés (puces), stack en badges.
-Contenu sourcé du CV (`Kamel_AZIZI_CV_Fullstack_Senior.pdf`), reformulé pour le web.
+1. **SNCF Connect** (depuis juin 2023) — Développeur Kotlin Full-Stack
+   - *Après-vente (APV)*, depuis juin 2024
+   - *Gestion documentaire (MaDOC)*, juin 2023 → juin 2024
+2. **Officéo** — mars 2021 → février 2023
+3. **Association** — octobre → décembre 2020
+
+Chaque mission : résumé, réalisations **orientées bénéfice** (jamais de métrique
+inventée), stack en badges. Contenu sourcé du CV, reformulé pour le web.
+
+La durée annoncée dans le chapô est **calculée au build** : plus ancienne
+`startDate` du contenu → années révolues (arrondi inférieur) → écrite en toutes
+lettres. Voir `src/utils/experience.ts` et `src/utils/career.ts`.
+
+#### Formations et certifications
+Section compacte en bas de page, volontairement plus légère que la timeline
+(pas de filet vertical, intitulés en sans-serif, ~15 % de sa hauteur) :
+SFEIR *AI Augmented Developer* (mai 2026, pastille « Certification » cliquable
+vers le justificatif public), Arolla *Software Craftsmanship* (février – juin
+2023), OpenClassrooms *Développeur d'application Java* (2020, titre RNCP
+niveau 6). Données dans `src/components/TrainingList.astro`.
 
 ### Projets (`/projets`, `/en/projects`)
-Fiches projet sans dépendance à une démo live. Chaque fiche : contexte, stack,
-« ce que j'ai appris », emplacements optionnels (lien repo, lien démo, captures)
-activables via le frontmatter.
-1. **degopro.fr** — site vitrine en production pour une entreprise d'assainissement
-   (https://degopro.fr). Réalisé en Nuxt ; refonte en cours en NextJS + Payload CMS
-   (bientôt déployée — la fiche sera mise à jour à ce moment-là). Seul projet avec
-   démo live : mis en avant en tête de page.
-2. **App d'animation d'événements** (Devfest) — React/NestJS migré vers NextJS,
-   MongoDB, AWS Amplify. Démo hors ligne : fiche descriptive seule.
-3. **Générateur de factures PDF** — React, react-pdf, Supabase. Confidentiel et à
-   redéployer : fiche descriptive, démo ajoutable plus tard.
-4. **Katas — pratique délibérée** — sélection de katas GitHub (birthday-greetings-kata…)
-   présentée comme pratique craft, pas comme produits.
-5. **Ce portfolio** — Astro, i18n, CI/CD Hostinger ; lien vers le repo public.
+**Liste éditoriale, pas une grille de cartes** — décision prise après revue
+design : une grille est un contenant de comparaison, or ces fiches sont des
+études de cas qui se lisent. Chaque entrée : colonne de lecture à 34 rem
+(≈ 68 signes) + rail à droite portant la stack et les liens.
+
+Chaque fiche suit une trame courte à libellés — **Le besoin · Mon rôle ·
+Décisions techniques · La contrainte · État actuel · Ce que j'ai appris** —
+en n'utilisant que les rubriques que les faits permettent de remplir. Les
+libellés sont rendus en petites capitales monospace terracotta (règle
+`.body p > strong:first-child`) pour servir d'index scannable.
+
+| # | Projet | Statut | Démo |
+|---|---|---|---|
+| 1 | **Degopro** (vedette) | `production` | degopro.fr |
+| 2 | **Masjid On Air** | `development` | masjidonair.fr |
+| 3 | Application d'animation d'événements | `offline` | — |
+| 4 | Générateur de factures PDF | `offline` | — |
+| 5 | Katas — pratique délibérée | — | repo |
+| 6 | Ce portfolio | `production` | repo |
+
+Le projet vedette est signalé **typographiquement** (filet terracotta 2 px, titre
+plus grand, résumé en serif), pas par une boîte. Le statut s'affiche en pastille
+à côté du titre.
 
 ### Articles (`/articles`, `/en/articles`)
-Index du blog. Deux types de cartes :
-- **Article hébergé** : lien interne vers `/articles/[slug]`.
-- **Article externe** : lien sortant (icône externe) — utilisé pour Vitest (Arolla).
+Index du blog, deux types de cartes : **hébergé** (lien interne) et **externe**
+(lien sortant, badge « Lire sur … »).
 
-Au lancement :
-| Article | Type | Source |
-|---|---|---|
-| Spec-Driven Development | hébergé | `sdd-article.md` (Kaibee/Article) |
-| OpenFeature (Devoxx 2026) | hébergé | comparer `article-openfeature-devoxx2026.md` au PDF final du même dossier, partir de la version la plus à jour |
-| Vitest | externe | https://www.arolla.fr/vitest-framework-de-test-unitaire-javascript/ |
-| Kotlin | différé | publié après relecture par Kamel (hors périmètre v1) |
+| Article | Type |
+|---|---|
+| Passer de Java à Kotlin | hébergé |
+| Spec-Driven Development | hébergé |
+| Bye bye Vendor Lock-in (OpenFeature, Devoxx France 2026) | hébergé |
+| Vitest | externe (arolla.fr) |
 
-L'index EN liste les articles FR avec la mention « in French ».
+Les titres restent en français dans les deux langues — c'est le titre réel de
+l'article. L'index EN affiche le badge « in French » et une `descriptionEn`
+traduite.
 
 ### Page article (`/articles/[slug]`)
-- Sommaire (TOC) généré depuis les titres.
-- Temps de lecture estimé.
-- Coloration syntaxique Shiki (thème accordé au design system).
-- **Diagrammes mermaid rendus au build** (l'article SDD en contient) — aucun JS
-  mermaid côté client.
-- Métadonnées : date, tags, description.
+Colonne de lecture centrée. Sommaire depuis les `h2` (au-delà de deux), temps de
+lecture, date complète (jour inclus), coloration Shiki, **diagrammes mermaid
+rendus au build** (aucun JS client), `og:type: article`.
 
 ## Contenu & i18n
 
-- Content Collections typées : `experiences/`, `projects/`, `articles/`, schémas zod
-  (titre, dates, stack, langue, liens optionnels, brouillon).
-- i18n via le routing natif Astro : `defaultLocale: fr` (racine), `en` préfixé.
-  Les chaînes d'interface (nav, labels) dans des fichiers de traduction dédiés.
-- Un article marqué `draft: true` est exclu du build (mécanique prête pour Kotlin
-  et les brouillons futurs).
+Collections typées dans `src/content.config.ts` :
+
+- `experiences` — `lang`, `company`, `role`, `mission?`, `startDate`, `endDate?`,
+  `stack[]`, `summary`
+- `projects` — `lang`, `title`, `order`, `featured?`, `status?`
+  (`production | development | offline`), `stack[]`, `summary`, `demoUrl?`, `repoUrl?`
+- `articles` — `title`, `description`, `descriptionEn?`, `pubDate`, `tags[]`,
+  `externalUrl?`, `externalHost?`, `draft`
+
+i18n par routing natif Astro (`defaultLocale: fr`, `prefixDefaultLocale: false`).
+Chaînes d'interface dans `src/i18n/ui.ts`, typées par `UiKey` — une clé manquante
+dans une langue est une erreur de compilation. `draft: true` exclut du build.
 
 ## Design system
 
-- **Couleurs** : fond crème `#faf6f0`, encre `#1a1a1a`, accent terracotta `#9a3b2e`,
-  gris chauds pour le secondaire. Clair uniquement en v1 (pas de dark mode).
-- **Typographie** : serif expressive pour les titres (type Fraunces), sans-serif
-  pour le corps, monospace en touches (badges de stack). Polices auto-hébergées
-  (@fontsource) — pas de Google Fonts (perf + RGPD).
-- **Détails éditoriaux** : filets fins, numérotation de sections, badges discrets.
-- Contraste AA minimum sur tous les textes.
+- **Couleurs** : crème `#faf6f0`, encre `#1a1a1a`, terracotta `#9a3b2e`,
+  secondaire `#6b6259`, filet `#e8e0d4`, surface `#ffffff`. Clair uniquement.
+- **Typographie** : Fraunces (titres), Inter (corps), JetBrains Mono (dates,
+  badges, libellés). Auto-hébergées via `@fontsource` — **jamais** de Google
+  Fonts ni de CDN.
+- **Détails** : filets fins, sections numérotées sur la home, badges discrets,
+  pastilles de statut.
+- Contraste AA minimum, focus clavier visible (`a:focus-visible`),
+  `prefers-reduced-motion` respecté.
+
+## Conventions éditoriales
+
+- **Typographie française** : apostrophes `’` (jamais `'`), espace insécable
+  avant `:`, espace fine insécable (U+202F) avant `; ! ?` et à l'intérieur des
+  guillemets `« … »`. Ne s'applique pas aux corps d'articles publiés ni au code.
+- **Terminologie** : Next.js, Vue.js, React Query, Jotai, SonarQube,
+  GitHub Actions, TypeScript, JavaScript, full-stack (FR et EN).
+- **Liens sortants** : `target="_blank" rel="noopener noreferrer"` — appliqué
+  aux composants, et aux liens des corps markdown via `rehype-external-links`.
+- **Honnêteté** : aucune métrique, adoption ou résultat non vérifiable. Quand
+  l'impact ne peut pas être prouvé, formulation qualitative.
 
 ## SEO & qualité
 
-- Sitemap, meta descriptions par page, OpenGraph (images générées par page), RSS.
-- Objectif Lighthouse ≥ 95 sur les quatre axes.
-- CI : build + vérification des liens internes à chaque push.
+Sitemap, meta description par page, OpenGraph complet avec images générées au
+build (`astro-og-canvas`), flux RSS, hreflang croisés. L'adresse e-mail n'apparaît
+jamais en clair dans le HTML : elle est encodée en entités décimales et injectée
+via `set:html` (Astro échappe `&` dans les attributs, ce qui casserait les
+entités).
+
+Tests unitaires Vitest sur les utilitaires purs (i18n, dates, obfuscation,
+calcul des années).
 
 ## Déploiement
 
-- Repo GitHub public.
-- GitHub Action sur `main` : install → build Astro → déploiement FTP/SFTP vers
-  Hostinger (secrets FTP dans GitHub).
-- Domaine géré chez Hostinger (à acquérir si absent — ex. `kamelazizi.dev`).
+- GitHub Actions sur `main` : `npm ci` → Chromium (pour mermaid) → tests → build
+  → vérification des **liens internes** (les liens externes sont exclus : un site
+  tiers indisponible ne doit pas bloquer un déploiement) → artefact.
+- Job `deploy` séparé, borné à `main`, hors pull request : téléchargement de
+  l'artefact puis FTPS vers Hostinger. Action épinglée par SHA, délai à 120 s,
+  **seconde tentative automatique** (le serveur mutualisé a des timeouts).
+- `FTP_SERVER_DIR` vaut `/` : le compte FTP est enraciné sur le dossier du site.
+- **Reconstruction programmée** (1er janvier et 1er octobre) : deux valeurs sont
+  calculées au build et se périmeraient sinon — la durée d'expérience et l'année
+  du copyright.
 - Publier un article = commiter un `.md` sur `main`.
 
-## Hors périmètre v1
+## Hors périmètre
 
-- Article Kotlin (après relecture), article OpenFeature en anglais.
-- Dark mode.
-- Démos live des projets (emplacements prévus dans le frontmatter).
-- Formulaire de contact, analytics, commentaires.
+Dark mode · formulaire de contact · analytics · commentaires · CV téléchargeable
+(volontairement : disponible sur demande uniquement) · traduction des articles en
+anglais.
