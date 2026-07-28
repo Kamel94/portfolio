@@ -4,7 +4,7 @@ title: Degopro
 order: 1
 featured: true
 status: production
-stack: [Nuxt, Vue.js, TypeScript]
+stack: [Nuxt, Vue.js, TypeScript, Next.js (en cours), Payload CMS (en cours)]
 summary: Site vitrine en production pour une entreprise d’assainissement — réalisé de bout en bout, du design au déploiement.
 demoUrl: https://degopro.fr
 ---

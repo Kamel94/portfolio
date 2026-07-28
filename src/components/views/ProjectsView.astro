@@ -76,6 +76,12 @@ const rendered = await Promise.all(
     }
   }
 
+  /* au-delà, le rail s'élargit pour tenir trois puces par ligne
+     plutôt que d'empiler la stack sur quatre lignes */
+  @media (min-width: 75rem) {
+    .projects { --rail: 20rem; }
+  }
+
   .head {
     display: flex;
     flex-wrap: wrap;

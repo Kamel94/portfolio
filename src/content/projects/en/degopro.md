@@ -4,7 +4,7 @@ title: Degopro
 order: 1
 featured: true
 status: production
-stack: [Nuxt, Vue.js, TypeScript]
+stack: [Nuxt, Vue.js, TypeScript, Next.js (in progress), Payload CMS (in progress)]
 summary: Production marketing site for a sanitation company — built end-to-end, from design to deployment.
 demoUrl: https://degopro.fr
 ---
