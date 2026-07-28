@@ -1,7 +1,8 @@
 ---
 lang: en
-title: degopro.fr
-order: 2
+title: Degopro
+order: 1
+featured: true
 status: production
 stack: [Nuxt, Vue.js, TypeScript]
 summary: Production marketing site for a sanitation company — built end-to-end, from design to deployment.

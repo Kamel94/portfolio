@@ -1,7 +1,8 @@
 ---
 lang: fr
-title: degopro.fr
-order: 2
+title: Degopro
+order: 1
+featured: true
 status: production
 stack: [Nuxt, Vue.js, TypeScript]
 summary: Site vitrine en production pour une entreprise d’assainissement — réalisé de bout en bout, du design au déploiement.
