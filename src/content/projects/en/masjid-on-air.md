@@ -7,7 +7,7 @@ stack: [React Native, Expo, TypeScript, Supabase, PostgreSQL, LiveKit, Deno]
 summary: "A complete live audio product for mosques: classes and adhan in real time, notifications, replays and an admin area."
 demoUrl: https://masjidonair.fr
 ---
-**The need**: let people follow a mosque's classes and adhan live from their phone, and listen back to the classes afterwards — without having to create an account.
+**The need**: follow classes and the adhan from your phone, and listen back afterwards — without having to create an account.
 
 **My role**: product design and development, from mobile to backend, using spec-driven development with coding agents.
 

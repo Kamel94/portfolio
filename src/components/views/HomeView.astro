@@ -12,7 +12,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const bio = {
-  fr: `Développeur full-stack senior, je conçois des applications robustes côté back (Kotlin, Java, Spring, Quarkus) comme côté front (TypeScript, React, Next.js, Vue.js). Formé au software craftsmanship chez Arolla, je pratique le TDD, le clean code et le pair programming au quotidien — aujourd’hui chez SNCF Connect, sur l’après-vente d’une application utilisée par des millions de voyageurs. J’intègre l’IA au cœur de mon flux de travail : agentic coding avec Claude Code, Copilot et Codex, complété par la formation « AI Augmented Developer » de SFEIR. Et quand je ne code pas, j’écris — des articles sur les tests, les specs et les pratiques qui font durer le logiciel.`,
+  fr: `Développeur full-stack senior, je conçois des applications robustes côté back (Kotlin, Java, Spring, Quarkus) comme côté front (TypeScript, React, Next.js, Vue.js). Formé au software craftsmanship chez Arolla, je pratique le TDD, le clean code et le pair programming au quotidien — aujourd’hui chez SNCF Connect, sur l’après-vente d’une application utilisée par des millions de voyageurs. J’intègre l’IA au cœur de mon flux de travail : agentic coding avec Claude Code, Copilot et Codex, complété par la formation « AI Augmented Developer » de SFEIR. Et quand je ne code pas, j’écris — des articles sur les tests, les specs et les pratiques qui font durer le logiciel.`,
   en: `I'm a senior full-stack developer building robust applications on the back end (Kotlin, Java, Spring, Quarkus) as well as the front end (TypeScript, React, Next.js, Vue.js). Trained in software craftsmanship at Arolla, I practice TDD, clean code and pair programming daily — currently at SNCF Connect, on the after-sales side of an app used by millions of travellers. AI sits at the core of my workflow: agentic coding with Claude Code, Copilot and Codex, backed by SFEIR's "AI Augmented Developer" training. And when I'm not coding, I write — articles about tests, specs and the practices that make software last.`,
 }[lang];
 
@@ -27,7 +27,7 @@ const articles = (await getCollection('articles', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 2);
 
-const projectsUrl = getRelativeLocaleUrl(lang, lang === 'fr' ? 'projets' : 'projects');
+const projectsUrl = getRelativeLocaleUrl(lang, lang === 'fr' ? 'projets' : 'projects');
 ---
 <section class="hero">
   <p class="kicker">{t('hero.kicker')}</p>
@@ -43,7 +43,7 @@ const projectsUrl = getRelativeLocaleUrl(lang, lang === 'fr' ? 'projets' : 'proj
 
 <section>
   <div class="section-heading"><span class="num">01</span><h2>{t('home.latestMission')}</h2></div>
-  <p class="kicker">{formatMonthYear(current.data.startDate, lang)} — {current.data.endDate ? formatMonthYear(current.data.endDate, lang) : t('experiences.today')}</p>
+  <p class="kicker">{formatMonthYear(current.data.startDate, lang)} — {current.data.endDate ? formatMonthYear(current.data.endDate, lang) : t('experiences.today')}</p>
   <h3>{current.data.role} · {current.data.company}</h3>
   <p class="muted">{current.data.summary}</p>
   <StackBadges stack={current.data.stack} />

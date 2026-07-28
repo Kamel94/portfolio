@@ -4,3 +4,6 @@ dist/
 .astro/
 .idea/
 *.bak
+
+# scripts de travail temporaires
+_*.mjs

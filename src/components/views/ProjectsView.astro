@@ -15,35 +15,77 @@ const rendered = await Promise.all(
 ---
 <h1>{t('projects.title')}</h1>
 <p class="intro">{t('projects.intro')}</p>
-<div class="grid">
+
+<ol class="projects">
   {rendered.map(({ entry, Content }) => (
-    <article class:list={['card', { featured: entry.data.featured }]}>
-      <h2>{entry.data.title}</h2>
-      {entry.data.status && (
-        <p class="status" data-status={entry.data.status}>{t(`projects.status.${entry.data.status}` as UiKey)}</p>
-      )}
-      <p class="summary">{entry.data.summary}</p>
-      <div class="body prose"><Content /></div>
-      <StackBadges stack={entry.data.stack} />
-      {(entry.data.demoUrl || entry.data.repoUrl) && (
-        <p class="links">
-          {entry.data.demoUrl && <a href={entry.data.demoUrl} target="_blank" rel="noopener noreferrer">{t('projects.demo')} ↗</a>}
-          {entry.data.repoUrl && <a href={entry.data.repoUrl} target="_blank" rel="noopener noreferrer">{t('projects.repo')} ↗</a>}
-        </p>
-      )}
-    </article>
+    <li>
+      <article class:list={['project', { featured: entry.data.featured }]}>
+        <div class="lede">
+          <div class="head">
+            <h2>{entry.data.title}</h2>
+            {entry.data.status && (
+              <span class="status" data-status={entry.data.status}>
+                {t(`projects.status.${entry.data.status}` as UiKey)}
+              </span>
+            )}
+          </div>
+          <p class="summary">{entry.data.summary}</p>
+          <div class="body"><Content /></div>
+        </div>
+        <aside class="spec">
+          <StackBadges stack={entry.data.stack} />
+          {(entry.data.demoUrl || entry.data.repoUrl) && (
+            <p class="links">
+              {entry.data.demoUrl && <a href={entry.data.demoUrl} target="_blank" rel="noopener noreferrer">{t('projects.demo')} ↗</a>}
+              {entry.data.repoUrl && <a href={entry.data.repoUrl} target="_blank" rel="noopener noreferrer">{t('projects.repo')} ↗</a>}
+            </p>
+          )}
+        </aside>
+      </article>
+    </li>
   ))}
-</div>
+</ol>
+
 <style>
-  .intro { color: var(--muted); max-width: 38rem; margin-block: 0.75rem 3rem; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1.5rem; }
-  .featured { grid-column: 1 / -1; border-color: var(--accent); }
-  h2 { font-size: 1.35rem; margin-bottom: 0.5rem; }
-  .summary { margin-bottom: 0.8rem; }
-  .body { color: var(--muted); font-size: 0.93rem; margin-bottom: 1rem; }
-  .links { margin-top: 1rem; display: flex; gap: 1.25rem; }
+  .intro { color: var(--muted); max-width: 34rem; margin-block: 0.75rem 3.5rem; }
+
+  .projects {
+    --measure: 34rem;   /* ~68 signes en Inter 17px */
+    --rail: 12rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: minmax(0, var(--measure));
+    gap: 1.5rem;
+    padding-block: 2.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .projects li:last-child .project { border-bottom: 0; }
+
+  @media (min-width: 56rem) {
+    .project {
+      grid-template-columns: minmax(0, var(--measure)) minmax(0, var(--rail));
+      justify-content: start;
+      column-gap: clamp(2rem, 4vw, 3rem);
+      align-items: start;
+    }
+  }
+
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.85rem;
+    margin-bottom: 0.7rem;
+  }
+  .project h2 { font-size: 1.45rem; line-height: 1.2; text-wrap: balance; }
+
   .status {
-    display: inline-block;
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
@@ -51,7 +93,29 @@ const rendered = await Promise.all(
     border-radius: 999px;
     padding: 0.1rem 0.6rem;
     color: var(--muted);
-    margin-bottom: 0.6rem;
+    white-space: nowrap;
   }
   .status[data-status='production'] { color: var(--accent); border-color: var(--accent); }
+
+  .summary { margin-bottom: 1.25rem; text-wrap: pretty; }
+
+  .body { color: var(--muted); font-size: 1rem; }
+  .body :global(p) { margin-bottom: 0.9rem; text-wrap: pretty; }
+  .body :global(p:last-child) { margin-bottom: 0; }
+  .body :global(p > strong:first-child) {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .spec { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem; font-size: 0.9rem; }
+
+  /* projet principal : signalé par la typographie, pas par une boîte */
+  .featured { border-top: 2px solid var(--accent); margin-top: -1px; }
+  .featured h2 { font-size: clamp(1.7rem, 3vw, 2.05rem); }
+  .featured .summary { font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.45; }
 </style>

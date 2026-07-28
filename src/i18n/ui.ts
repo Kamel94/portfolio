@@ -32,14 +32,14 @@ export const ui = {
     'projects.status.offline': 'Hors ligne',
     'articles.title': 'Articles',
     'articles.intro':
-      'Tests, specs, feature flags : des articles pour faire durer le logiciel.',
+      'Tests, specs, feature flags : des articles pour faire durer le logiciel.',
     'articles.external': 'Lire sur',
     'articles.readingTime': 'min de lecture',
     'articles.toc': 'Sommaire',
     'articles.inFrench': '',
     'contact.title': 'Travaillons ensemble',
     'contact.body':
-      'Une opportunité, une question sur mon parcours, ou simplement envie d’échanger sur le craft et le développement augmenté par l’IA ? Écrivez-moi.',
+      'Une opportunité, une question sur mon parcours, ou simplement envie d’échanger sur le craft et le développement augmenté par l’IA ? Écrivez-moi.',
     'contact.cta': 'M’écrire',
     'contact.cv': 'Mon CV détaillé est disponible sur demande.',
     'footer.contact': 'Me contacter',

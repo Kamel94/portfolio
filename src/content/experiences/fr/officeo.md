@@ -9,5 +9,5 @@ summary: Chez le leader français de l’Office Management à la demande, en bin
 ---
 - Refonte du back-office en Vue.js/Vuetify, en remplacement d’une application Java 6 devenue difficile à faire évoluer, avec migration progressive des fonctionnalités
 - Création d’APIs REST et GraphQL dans une application Spring Boot dédiée
-- CRONs dynamiques pilotables par API : activation, reprogrammation et journal d’exécution en base, sans redéploiement
+- CRONs dynamiques pilotables par API : activation, reprogrammation et journal d’exécution en base, sans redéploiement
 - Participation à la conception, documentation et tests unitaires JUnit

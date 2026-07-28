@@ -8,7 +8,7 @@ stack: [Nuxt, Vue.js, TypeScript]
 summary: Production marketing site for a sanitation company — built end-to-end, from design to deployment.
 demoUrl: https://degopro.fr
 ---
-**The need**: give a sanitation company an online showcase — service overview, quote requests and local SEO.
+**The need**: an online presence — service overview, quote requests and local SEO.
 
 **My role**: design, development and launch, end to end.
 
