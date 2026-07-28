@@ -4,7 +4,7 @@ title: PDF invoice generator
 order: 4
 status: offline
 stack: [React, react-pdf, Supabase]
-summary: An invoicing app that generates PDFs, built solo end-to-end — Supabase authentication and react-pdf generation.
+summary: An invoicing app built solo end-to-end, from editing to PDF export.
 ---
 **The need**: a self-contained invoicing tool — editing, previewing and PDF export.
 

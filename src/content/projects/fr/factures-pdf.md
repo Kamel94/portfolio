@@ -4,7 +4,7 @@ title: Générateur de factures PDF
 order: 4
 status: offline
 stack: [React, react-pdf, Supabase]
-summary: Application de création de factures en PDF, développée seul de bout en bout — authentification Supabase et génération react-pdf.
+summary: Application de facturation développée seule de bout en bout, de l’édition à l’export PDF.
 ---
 **Le besoin** : un outil de facturation autonome — édition, prévisualisation et export PDF.
 

@@ -4,7 +4,7 @@ title: This portfolio
 order: 6
 status: production
 stack: [Astro, TypeScript, GitHub Actions]
-summary: The site you're reading — static, bilingual, zero client-side JavaScript, continuously deployed to Hostinger.
+summary: The site you're reading, designed and deployed end to end.
 repoUrl: https://github.com/Kamel94/portfolio
 ---
 **The need**: a personal site that showcases my background and hosts my articles, without depending on a platform.

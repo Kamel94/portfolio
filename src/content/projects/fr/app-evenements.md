@@ -6,8 +6,6 @@ status: offline
 stack: [Next.js, React, NestJS, MongoDB, AWS Amplify]
 summary: Application ludique pour animer des événements tech (Devfest) — quiz et interactions en direct avec le public.
 ---
-**Le besoin** : animer des événements tech (type Devfest) avec des quiz et des interactions en direct avec le public.
-
 **Décisions techniques** : première version en React et NestJS, puis migration complète vers Next.js pour réunir le front et le back dans une seule application, avec MongoDB et un déploiement AWS Amplify.
 
 **La contrainte** : un pic d’utilisateurs simultanés concentré sur la durée de l’événement.
