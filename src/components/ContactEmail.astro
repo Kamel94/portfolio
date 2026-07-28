@@ -1,0 +1,13 @@
+---
+import { obfuscateEmail } from '../utils/email';
+
+interface Props { label?: string; class?: string }
+const { label, class: className } = Astro.props;
+const email = obfuscateEmail('contact@kameldev.fr');
+// Astro échappe & dans les attributs, ce qui casserait les entités :
+// set:html garde le mailto encodé une seule fois.
+const mailto = `&#109;&#97;&#105;&#108;&#116;&#111;&#58;${email}`;
+const content = label ?? email;
+const attrs = className ? ` class="${className}"` : '';
+---
+<Fragment set:html={`<a href="${mailto}"${attrs}>${content}</a>`} />

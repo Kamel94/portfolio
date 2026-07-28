@@ -11,24 +11,66 @@ const t = useTranslations(lang);
 const entries = (await getCollection('experiences', ({ data }) => data.lang === lang))
   .sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf());
 
-const rendered = await Promise.all(
-  entries.map(async (e) => ({ entry: e, Content: (await render(e)).Content }))
+type Group = { company: string; role: string; entries: typeof entries };
+const groups: Group[] = [];
+for (const entry of entries) {
+  const last = groups.at(-1);
+  if (last && last.company === entry.data.company) last.entries.push(entry);
+  else groups.push({ company: entry.data.company, role: entry.data.role, entries: [entry] });
+}
+
+const renderedGroups = await Promise.all(
+  groups.map(async (group) => {
+    const items = await Promise.all(
+      group.entries.map(async (entry) => ({ entry, Content: (await render(entry)).Content }))
+    );
+    const startDate = group.entries.reduce(
+      (min, e) => (e.data.startDate < min ? e.data.startDate : min),
+      group.entries[0].data.startDate
+    );
+    const hasOngoing = group.entries.some((e) => !e.data.endDate);
+    const endDate = hasOngoing
+      ? undefined
+      : group.entries.reduce(
+          (max, e) => (e.data.endDate! > max ? e.data.endDate! : max),
+          group.entries[0].data.endDate!
+        );
+    return { company: group.company, role: group.role, period: { startDate, endDate }, items };
+  })
 );
 ---
 <h1>{t('experiences.title')}</h1>
 <p class="intro">{t('experiences.intro')}</p>
 <ol class="timeline">
-  {rendered.map(({ entry, Content }) => (
+  {renderedGroups.map((group) => (
     <li>
       <p class="period kicker">
-        {formatMonthYear(entry.data.startDate, lang)} — {entry.data.endDate
-          ? formatMonthYear(entry.data.endDate, lang)
+        {formatMonthYear(group.period.startDate, lang)} — {group.period.endDate
+          ? formatMonthYear(group.period.endDate, lang)
           : t('experiences.today')}
       </p>
-      <h2>{entry.data.role} · {entry.data.company}</h2>
-      <p class="summary">{entry.data.summary}</p>
-      <div class="details"><Content /></div>
-      <StackBadges stack={entry.data.stack} />
+      <h2>{group.role} · {group.company}</h2>
+      {group.items.map(({ entry, Content }) => (
+        group.items.length > 1 && entry.data.mission ? (
+          <>
+            <h3 class="mission">{entry.data.mission}</h3>
+            <p class="mission-period">
+              {formatMonthYear(entry.data.startDate, lang)} — {entry.data.endDate
+                ? formatMonthYear(entry.data.endDate, lang)
+                : t('experiences.today')}
+            </p>
+            <p class="summary">{entry.data.summary}</p>
+            <div class="details"><Content /></div>
+            <StackBadges stack={entry.data.stack} />
+          </>
+        ) : (
+          <>
+            <p class="summary">{entry.data.summary}</p>
+            <div class="details"><Content /></div>
+            <StackBadges stack={entry.data.stack} />
+          </>
+        )
+      ))}
     </li>
   ))}
 </ol>
@@ -55,4 +97,6 @@ const rendered = await Promise.all(
   .summary { margin-block: 0.6rem; max-width: 40rem; }
   .details { color: var(--muted); font-size: 0.95rem; max-width: 40rem; margin-bottom: 1rem; }
   .details :global(ul) { padding-left: 1.1rem; }
+  .mission { font-size: 1.1rem; margin-top: 1.5rem; }
+  .mission-period { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.4rem; }
 </style>

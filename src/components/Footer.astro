@@ -1,19 +1,16 @@
 ---
 import { useTranslations, type Lang } from '../i18n/ui';
-import { obfuscateEmail } from '../utils/email';
+import ContactEmail from './ContactEmail.astro';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const email = obfuscateEmail('contact@kameldev.fr');
-const mailto = `&#109;&#97;&#105;&#108;&#116;&#111;&#58;${email}`;
 ---
 <footer>
   <div class="container footer-inner">
     <p class="kicker">{t('footer.contact')}</p>
     <ul>
-      <!-- set:html requis : Astro échappe & dans les attributs, ce qui casserait les entités de l'email obfusqué -->
-      <li set:html={`<a href="${mailto}">${email}</a>`} />
+      <li><ContactEmail /></li>
       <li><a href="https://www.linkedin.com/in/azizi-kamel" target="_blank" rel="me noopener noreferrer">LinkedIn</a></li>
       <li><a href="https://github.com/Kamel94" target="_blank" rel="me noopener noreferrer">GitHub</a></li>
       <li><a href="/rss.xml">{t('footer.rss')}</a></li>

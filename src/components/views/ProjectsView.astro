@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import StackBadges from '../StackBadges.astro';
-import { useTranslations, type Lang } from '../../i18n/ui';
+import { useTranslations, type Lang, type UiKey } from '../../i18n/ui';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -19,6 +19,9 @@ const rendered = await Promise.all(
   {rendered.map(({ entry, Content }) => (
     <article class:list={['card', { featured: entry.data.featured }]}>
       <h2>{entry.data.title}</h2>
+      {entry.data.status && (
+        <p class="status" data-status={entry.data.status}>{t(`projects.status.${entry.data.status}` as UiKey)}</p>
+      )}
       <p class="summary">{entry.data.summary}</p>
       <div class="body prose"><Content /></div>
       <StackBadges stack={entry.data.stack} />
@@ -39,4 +42,16 @@ const rendered = await Promise.all(
   .summary { margin-bottom: 0.8rem; }
   .body { color: var(--muted); font-size: 0.93rem; margin-bottom: 1rem; }
   .links { margin-top: 1rem; display: flex; gap: 1.25rem; }
+  .status {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.1rem 0.6rem;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .status[data-status='production'] { color: var(--accent); border-color: var(--accent); }
 </style>

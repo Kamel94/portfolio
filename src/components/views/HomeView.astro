@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import ArticleCard from '../ArticleCard.astro';
 import StackBadges from '../StackBadges.astro';
+import ContactEmail from '../ContactEmail.astro';
 import { formatMonthYear } from '../../utils/date';
 import { useTranslations, type Lang } from '../../i18n/ui';
 
@@ -36,6 +37,7 @@ const projectsUrl = getRelativeLocaleUrl(lang, lang === 'fr' ? 'projets' : 'proj
   <p class="ctas">
     <a class="btn" href={getRelativeLocaleUrl(lang, 'experiences')}>{t('hero.ctaExperiences')}</a>
     <a href={getRelativeLocaleUrl(lang, 'articles')}>{t('hero.ctaArticles')} →</a>
+    <ContactEmail label={t('hero.ctaContact')} />
   </p>
 </section>
 
@@ -70,22 +72,22 @@ const projectsUrl = getRelativeLocaleUrl(lang, lang === 'fr' ? 'projets' : 'proj
   <p><a href={getRelativeLocaleUrl(lang, 'articles')}>{t('home.seeAll')} →</a></p>
 </section>
 
+<section class="contact">
+  <div class="section-heading"><span class="num">04</span><h2>{t('contact.title')}</h2></div>
+  <p class="muted">{t('contact.body')}</p>
+  <p class="ctas"><ContactEmail label={t('contact.cta')} class="btn" /></p>
+  <p class="cv-note">{t('contact.cv')}</p>
+</section>
+
 <style>
   .hero { padding-block: 4rem 5rem; max-width: 46rem; }
   .tagline { font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; margin-block: 1rem 1.5rem; }
   .bio { color: var(--muted); margin-bottom: 2rem; }
-  .ctas { display: flex; gap: 1.5rem; align-items: center; }
-  .btn {
-    background: var(--ink);
-    color: var(--bg);
-    text-decoration: none;
-    padding: 0.6rem 1.4rem;
-    border-radius: 3px;
-    font-size: 0.95rem;
-  }
-  .btn:hover { background: var(--accent); }
+  .ctas { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
   section { margin-bottom: 4rem; }
   .muted { color: var(--muted); margin-block: 0.5rem 0.8rem; max-width: 40rem; }
   .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.5rem; margin-bottom: 1rem; }
   h3 { font-size: 1.25rem; }
+  .contact .muted { max-width: 40rem; }
+  .cv-note { color: var(--muted); font-size: 0.9rem; margin-top: 1rem; }
 </style>

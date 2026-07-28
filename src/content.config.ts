@@ -12,6 +12,7 @@ const experiences = defineCollection({
     endDate: z.coerce.date().optional(),
     stack: z.array(z.string()),
     summary: z.string(),
+    mission: z.string().optional(),
   }),
 });
 
@@ -26,6 +27,7 @@ const projects = defineCollection({
     summary: z.string(),
     demoUrl: z.string().url().optional(),
     repoUrl: z.string().url().optional(),
+    status: z.enum(['production', 'development', 'offline']).optional(),
   }),
 });
 
@@ -39,6 +41,7 @@ const articles = defineCollection({
     externalUrl: z.string().url().optional(),
     externalHost: z.string().optional(),
     draft: z.boolean().default(false),
+    descriptionEn: z.string().optional(),
   }),
 });
 

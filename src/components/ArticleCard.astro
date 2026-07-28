@@ -8,11 +8,13 @@ const { article, lang } = Astro.props;
 const t = useTranslations(lang);
 const external = Boolean(article.data.externalUrl);
 const href = external ? article.data.externalUrl : `/articles/${article.id}/`;
+const description =
+  lang === 'en' && article.data.descriptionEn ? article.data.descriptionEn : article.data.description;
 ---
 <article class="card">
   <p class="kicker">{formatFullDate(article.data.pubDate, lang)}</p>
   <h2><a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>{article.data.title}{external && ' ↗'}</a></h2>
-  <p class="desc">{article.data.description}</p>
+  <p class="desc">{description}</p>
   <p class="meta">
     {external && <span class="badge">{t('articles.external')} {article.data.externalHost}</span>}
     {lang === 'en' && <span class="badge">{t('articles.inFrench')}</span>}
