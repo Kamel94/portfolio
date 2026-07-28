@@ -1,6 +1,7 @@
 ---
 title: "Spec-Driven Development : et si on écrivait la spec avant le code ?"
 description: "Comment l’IA a remis au goût du jour une idée vieille comme le génie logiciel : écrire la spécification avant la moindre ligne de code."
+descriptionEn: "How AI brought back an idea as old as software engineering itself: writing the specification before any line of code."
 pubDate: 2026-07-19
 tags: [sdd, ia, agentic-coding, méthodes]
 ---

@@ -1,7 +1,7 @@
 ---
 lang: fr
 title: Katas — pratique délibérée
-order: 4
+order: 5
 stack: [Java, Kotlin, TDD]
 summary: Une sélection de katas de code — pas des produits, un entraînement régulier au TDD et au refactoring hérité de ma formation craft chez Arolla.
 repoUrl: https://github.com/Kamel94/birthday-greetings-kata

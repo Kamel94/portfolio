@@ -1,13 +1,15 @@
 ---
 lang: en
 title: PDF invoice generator
-order: 3
+order: 4
+status: offline
 stack: [React, react-pdf, Supabase]
 summary: An invoicing app that generates PDFs, built solo end-to-end — Supabase authentication and react-pdf generation.
 ---
-A complete invoicing tool: editing, previewing and exporting to PDF.
-Currently offline (redeployment planned), used in a private context.
+**The need**: a self-contained invoicing tool — editing, previewing and PDF export.
 
-**What I learned**: client-side document generation with react-pdf,
-and serverless authentication/persistence with Supabase — including
-the importance of backups when a cloud project disappears.
+**Technical decisions**: client-side PDF generation with react-pdf; authentication and persistence delegated to Supabase, to stay on a serverless architecture with no server to maintain.
+
+**Current status**: offline, redeployment planned.
+
+**What I learned**: client-side document generation, and the importance of backups — the Supabase project disappeared, and only a backup made it possible to keep the work.

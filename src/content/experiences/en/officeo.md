@@ -1,13 +1,13 @@
 ---
 lang: en
 company: Officéo
-role: Fullstack Java Developer
+role: Full-Stack Java Developer
 startDate: 2021-03-01
 endDate: 2023-02-28
-stack: [Java 11, Spring Boot, MySQL, VueJS, Vuetify, GraphQL, Keycloak, Docker]
-summary: At the French leader of on-demand office management, pairing directly with the CTO — rebuilt the Back Office and evolved the Client and Assistant applications.
+stack: [Java 11, Spring Boot, MySQL, Vue.js, Vuetify, GraphQL, Keycloak, Docker]
+summary: At the French leader of on-demand office management, pairing directly with the CTO — rebuilt the back office and evolved the Client and Assistant applications.
 ---
-- Built the new VueJS/Vuetify Back Office replacing the legacy one (Java 6), migrated its features
-- Created REST and GraphQL APIs (dedicated new Spring Boot application)
-- Dynamic CRON jobs: toggleable, reschedulable through an API, with an execution log in database
-- Application design, documentation, JUnit unit tests
+- Rebuilt the back office in Vue.js/Vuetify, replacing a Java 6 application that had become hard to evolve, with progressive feature migration
+- Created REST and GraphQL APIs in a dedicated Spring Boot application
+- Dynamic CRON jobs driven by API: enabling, rescheduling and an execution log in database, with no redeployment
+- Application design, documentation and JUnit unit tests

@@ -1,6 +1,7 @@
 ---
 title: "Bye bye Vendor Lock-in — Mon retour sur la conférence OpenFeature à Devoxx France 2026"
 description: "Retour sur OpenFeature, le standard CNCF contre le vendor lock-in : OFREP, Tracking API, OpenTelemetry et serveur MCP dédié."
+descriptionEn: "A look back at OpenFeature, the CNCF standard against vendor lock-in: OFREP, Tracking API, OpenTelemetry and a dedicated MCP server."
 pubDate: 2026-04-24
 tags: [feature-flags, openfeature, devoxx, java]
 ---
