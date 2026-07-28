@@ -1,6 +1,7 @@
 ---
 title: "Passer de Java à Kotlin"
 description: "Retour d'expérience après trois ans : ce que Kotlin change vraiment face à un Java moderne — classes, data class et record, nullabilité, extensions, coroutines et interopérabilité."
+descriptionEn: "Three years in: what Kotlin actually changes compared to modern Java — classes, data class versus record, null safety, extensions, coroutines and interoperability."
 pubDate: 2026-07-26
 tags: [kotlin, java, jvm, coroutines]
 ---
