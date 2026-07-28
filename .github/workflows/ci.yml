@@ -4,10 +4,12 @@ on:
   push:
     branches: [main]
   pull_request:
-  # Reconstruction mensuelle : la durée d'expérience affichée est calculée au
-  # build, elle se périmerait sans nouveau déploiement.
+  # Deux valeurs sont calculées au build et se périmeraient sans nouveau
+  # déploiement : la durée d'expérience (bascule le 1er octobre) et l'année du
+  # copyright en pied de page (1er janvier). Un trimestriel couvre les deux
+  # dates, avec une exécution de rattrapage entre chaque.
   schedule:
-    - cron: '0 4 1 * *'
+    - cron: '0 4 1 1,4,7,10 *'
   workflow_dispatch:
 
 permissions:
