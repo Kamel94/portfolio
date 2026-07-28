@@ -4,6 +4,7 @@ import StackBadges from '../StackBadges.astro';
 import TrainingList from '../TrainingList.astro';
 import { formatMonthYear } from '../../utils/date';
 import { useTranslations, type Lang } from '../../i18n/ui';
+import { experienceIntro } from '../../utils/career';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -41,7 +42,7 @@ const renderedGroups = await Promise.all(
 );
 ---
 <h1>{t('experiences.title')}</h1>
-<p class="intro">{t('experiences.intro')}</p>
+<p class="intro">{await experienceIntro(lang)}</p>
 <ol class="timeline">
   {renderedGroups.map((group) => (
     <li>
