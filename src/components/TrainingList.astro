@@ -1,0 +1,100 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Trois entrées, sans corps rédigé : les garder ici évite une collection de
+// contenu pour six fichiers markdown vides. Ordre antéchronologique.
+const entries = [
+  {
+    period: { fr: 'Mai 2026', en: 'May 2026' },
+    title: { fr: 'AI Augmented Developer', en: 'AI Augmented Developer' },
+    org: 'SFEIR',
+    place: { fr: 'Paris', en: 'Paris' },
+    certified: true,
+  },
+  {
+    period: { fr: 'Février – juin 2023', en: 'February – June 2023' },
+    title: { fr: 'Formation Software Craftsmanship', en: 'Software Craftsmanship Training' },
+    org: 'Arolla',
+    place: { fr: 'Paris', en: 'Paris' },
+  },
+  {
+    period: { fr: '2020', en: '2020' },
+    title: { fr: 'Développeur d’application Java', en: 'Java Application Developer' },
+    org: 'OpenClassrooms',
+    place: { fr: 'en ligne', en: 'online' },
+    note: { fr: 'Titre RNCP niveau 6 — équivalent Bac +3/4', en: 'Level 6 RNCP qualification — equivalent to a three- or four-year degree' },
+  },
+];
+---
+<section class="training">
+  <div class="section-heading"><h2>{t('training.title')}</h2></div>
+  <ul>
+    {entries.map((e) => (
+      <li>
+        <p class="period">{e.period[lang]}</p>
+        <div class="entry">
+          <h3>
+            {e.title[lang]}
+            {e.certified && <span class="certified">{t('training.certified')}</span>}
+          </h3>
+          <p class="org">{e.org} · {e.place[lang]}</p>
+          {e.note && <p class="note">{e.note[lang]}</p>}
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>
+<style>
+  .training { margin-top: 4.5rem; }
+  .training h2 { font-size: 1.2rem; }
+  /* le filet du titre s’aligne sur la largeur des entrées, pas du conteneur */
+  .training .section-heading { max-width: 46rem; margin-bottom: 1rem; }
+
+  ul { list-style: none; padding: 0; margin: 0; max-width: 46rem; }
+  li {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.15rem 1.5rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  li:last-child { border-bottom: 0; }
+
+  @media (min-width: 34rem) {
+    li { grid-template-columns: 9.5rem 1fr; gap: 0 1.5rem; align-items: baseline; }
+  }
+
+  .period {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  h3 {
+    font-size: 1.02rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.7rem;
+  }
+  .org { color: var(--muted); font-size: 0.92rem; }
+  .note { color: var(--muted); font-size: 0.86rem; margin-top: 0.15rem; }
+
+  .certified {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 999px;
+    padding: 0.08rem 0.55rem;
+    white-space: nowrap;
+  }
+</style>

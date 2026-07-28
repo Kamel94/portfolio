@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import StackBadges from '../StackBadges.astro';
+import TrainingList from '../TrainingList.astro';
 import { formatMonthYear } from '../../utils/date';
 import { useTranslations, type Lang } from '../../i18n/ui';
 
@@ -74,6 +75,8 @@ const renderedGroups = await Promise.all(
     </li>
   ))}
 </ol>
+
+<TrainingList lang={lang} />
 <style>
   .intro { color: var(--muted); max-width: 38rem; margin-block: 0.75rem 3rem; }
   .timeline { list-style: none; padding: 0; }

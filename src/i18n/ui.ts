@@ -22,6 +22,8 @@ export const ui = {
     'experiences.intro':
       'Plus de cinq ans de développement full-stack, du monolithe legacy aux plateformes cloud à fort trafic.',
     'experiences.today': 'aujourd’hui',
+    'training.title': 'Formations et certifications',
+    'training.certified': 'Certification',
     'projects.title': 'Projets',
     'projects.intro':
       'Sites en production, applications personnelles et pratique délibérée.',
@@ -66,6 +68,8 @@ export const ui = {
     'experiences.intro':
       'Over five years of full-stack development, from legacy monoliths to high-traffic cloud platforms.',
     'experiences.today': 'present',
+    'training.title': 'Training & certifications',
+    'training.certified': 'Certified',
     'projects.title': 'Projects',
     'projects.intro': 'Production websites, personal apps and deliberate practice.',
     'projects.demo': 'Visit site',
