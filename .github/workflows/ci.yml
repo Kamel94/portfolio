@@ -48,7 +48,12 @@ jobs:
         with:
           name: dist
           path: dist
+      # Le serveur FTP mutualisé met parfois plusieurs dizaines de secondes à
+      # ouvrir la socket de contrôle : 30 s par défaut ne suffisent pas, et une
+      # seconde tentative rattrape les coupures franches.
       - name: Déploiement FTP Hostinger
+        id: deploy
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@8e83cea8672e3fbcbb9fdafff34debf6ae4c5f65 # v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -57,3 +62,16 @@ jobs:
           protocol: ftps
           local-dir: dist/
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          timeout: 120000
+
+      - name: Déploiement FTP Hostinger (seconde tentative)
+        if: steps.deploy.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@8e83cea8672e3fbcbb9fdafff34debf6ae4c5f65 # v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: dist/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          timeout: 120000
