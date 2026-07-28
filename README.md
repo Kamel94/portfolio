@@ -33,3 +33,9 @@ puis un déploiement FTPS vers Hostinger (secrets `FTP_*` du repo).
 Une reconstruction est aussi programmée le 1er janvier et le 1er octobre : la
 durée d'expérience affichée et l'année du copyright sont calculées au build et
 se périmeraient sans nouveau déploiement.
+
+## Licence
+
+Le code est sous licence MIT : reprenez et adaptez l'implémentation librement.
+Le contenu éditorial — articles, fiches d'expériences et de projets, textes
+d'interface — reste protégé, tous droits réservés. Voir [LICENSE](LICENSE).
