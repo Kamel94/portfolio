@@ -32,10 +32,13 @@ jobs:
       # bloquer un déploiement.
       - name: Vérification des liens internes
         run: npx linkinator@6 ./dist --recurse --silent --skip "^https?://(?!localhost)"
+      # Sans cette option, l'action exclut les fichiers cachés : le .htaccess
+      # qui porte les en-têtes de cache n'arriverait jamais jusqu'au déploiement.
       - uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist
+          include-hidden-files: true
 
   deploy:
     needs: build
