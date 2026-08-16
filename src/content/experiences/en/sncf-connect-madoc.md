@@ -5,7 +5,7 @@ role: Full-Stack Kotlin Developer
 mission: Document management (MaDOC)
 startDate: 2023-06-01
 endDate: 2024-06-01
-stack: [Kotlin, Quarkus, GraalVM, MongoDB, React, Material-UI, Jotai, AWS, Flux CD, Helm]
+stack: [Kotlin, Quarkus, GraalVM, MongoDB, React, Material-UI, React Query, Jotai, AWS, Flux CD, Helm]
 summary: MaDOC, a document-management application built from scratch for railway field workers (train drivers, ground agents) — signing documents issued within the app.
 ---
 - Kotlin/Quarkus backend in hexagonal architecture, isolating the domain from frameworks and making it testable
