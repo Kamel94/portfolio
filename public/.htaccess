@@ -1,0 +1,21 @@
+# Hostinger ne renvoie aucun en-tête Cache-Control sur le HTML. Sans lui, le
+# navigateur applique sa mise en cache heuristique (≈ 10 % du temps écoulé
+# depuis Last-Modified) : il sert une page périmée sans même interroger le
+# serveur, et il faut recharger à la main après chaque déploiement.
+#
+# On force donc la revalidation du HTML — l'ETag rend la vérification quasi
+# gratuite, le serveur répond 304 quand rien n'a changé — et on met en cache
+# long les assets, dont le nom porte déjà une empreinte de contenu : un
+# nouveau build produit un nouveau nom de fichier, il n'y a pas de péremption
+# possible.
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|xml|json|txt)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  # Tous les CSS, JS et polices sont générés sous /_astro/ avec un hash.
+  <FilesMatch "\.(css|js|woff|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
