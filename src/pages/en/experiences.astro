@@ -1,15 +1,24 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ExperiencesView from '../../components/views/ExperiencesView.astro';
+// Page en maintenance — pour la réafficher, rétablir ExperiencesView et sa
+// description, retirer noindex, puis décommenter les liens dans Header.astro et
+// HomeView.astro et le filtre du sitemap dans astro.config.mjs.
+// import ExperiencesView from '../../components/views/ExperiencesView.astro';
 import { useTranslations } from '../../i18n/ui';
-import { experienceIntro } from '../../utils/career';
+// import { experienceIntro } from '../../utils/career';
 const t = useTranslations('en');
 ---
 <BaseLayout
   lang="en"
   title={`${t('experiences.title')} — Kamel Azizi`}
-  description={await experienceIntro('en')}
+  description={t('experiences.maintenance')}
   alternateHref="/experiences/"
+  noindex
 >
-  <ExperiencesView lang="en" />
+  <h1>{t('experiences.title')}</h1>
+  <p class="intro">{t('experiences.maintenance')}</p>
+  {/* <ExperiencesView lang="en" /> */}
 </BaseLayout>
+<style>
+  .intro { color: var(--muted); max-width: 38rem; margin-block: 0.75rem 3rem; }
+</style>

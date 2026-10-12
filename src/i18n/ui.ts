@@ -22,6 +22,7 @@ export const ui = {
     'experiences.intro':
       'Plus de {years} de développement full-stack, du monolithe legacy aux plateformes cloud à fort trafic.',
     'experiences.today': 'aujourd’hui',
+    'experiences.maintenance': 'Cette page est momentanément indisponible. Elle sera de retour bientôt.',
     'training.title': 'Formations et certifications',
     'training.certified': 'Certification',
     'projects.title': 'Projets',
@@ -68,6 +69,7 @@ export const ui = {
     'experiences.intro':
       'Over {years} of full-stack development, from legacy monoliths to high-traffic cloud platforms.',
     'experiences.today': 'present',
+    'experiences.maintenance': 'This page is temporarily unavailable. It will be back soon.',
     'training.title': 'Training & certifications',
     'training.certified': 'Certified',
     'projects.title': 'Projects',

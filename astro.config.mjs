@@ -11,7 +11,8 @@ export default defineConfig({
     locales: ['fr', 'en'],
     routing: { prefixDefaultLocale: false },
   },
-  integrations: [sitemap()],
+  // Page Expériences en maintenance : retirer le filtre pour la réindexer.
+  integrations: [sitemap({ filter: (page) => !page.includes('/experiences/') })],
   markdown: {
     syntaxHighlight: { type: 'shiki', excludeLangs: ['mermaid'] },
     shikiConfig: { theme: 'vitesse-light' },

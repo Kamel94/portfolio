@@ -35,7 +35,9 @@ const projectsUrl = getRelativeLocaleUrl(lang, lang === 'fr' ? 'projets' : 'p
   <p class="tagline">{t('hero.tagline')}</p>
   <p class="bio">{bio}</p>
   <p class="ctas">
+    {/* Page Expériences en maintenance — décommenter pour la réafficher.
     <a class="btn" href={getRelativeLocaleUrl(lang, 'experiences')}>{t('hero.ctaExperiences')}</a>
+    */}
     <a href={getRelativeLocaleUrl(lang, 'articles')}>{t('hero.ctaArticles')} →</a>
     <ContactEmail label={t('hero.ctaContact')} />
   </p>
@@ -47,7 +49,9 @@ const projectsUrl = getRelativeLocaleUrl(lang, lang === 'fr' ? 'projets' : 'p
   <h3>{current.data.role} · {current.data.company}</h3>
   <p class="muted">{current.data.summary}</p>
   <StackBadges stack={current.data.stack} />
+  {/* Page Expériences en maintenance — décommenter pour la réafficher.
   <p><a href={getRelativeLocaleUrl(lang, 'experiences')}>{t('home.seeAll')} →</a></p>
+  */}
 </section>
 
 <section>
